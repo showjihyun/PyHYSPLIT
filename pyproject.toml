@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyhysplit"
+version = "0.1.0"
+description = "Python implementation of the HYSPLIT atmospheric transport and dispersion modeling system"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+gpu = [
+    "cupy>=12.0",
+    "numba>=0.57",
+]
+viz = [
+    "matplotlib>=3.7",
+    "cartopy>=0.21",
+]
+netcdf = [
+    "netCDF4>=1.6",
+    "xarray>=2023.1",
+]
+dev = [
+    "pytest>=7.4",
+    "hypothesis>=6.82",
+    "pytest-cov>=4.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "property: property-based tests",
+    "integration: integration tests",
+]
+
+[tool.setuptools.packages.find]
+include = ["pyhysplit*"]

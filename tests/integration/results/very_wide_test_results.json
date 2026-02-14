@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Seoul",
+    "lat": 37.5,
+    "lon": 127.0,
+    "total_points": 25,
+    "actual_points": 25,
+    "completion_rate": 100.0,
+    "min_lon": 126.98470998579313,
+    "max_lon": 127.01227805843502,
+    "min_lat": 37.499737493177975,
+    "max_lat": 37.51629124928337,
+    "within_bounds": 

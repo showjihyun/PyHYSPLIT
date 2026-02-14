@@ -1,0 +1,22 @@
+Metadata-Version: 2.4
+Name: pyhysplit
+Version: 0.1.0
+Summary: Python implementation of the HYSPLIT atmospheric transport and dispersion modeling system
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.24
+Requires-Dist: scipy>=1.10
+Provides-Extra: gpu
+Requires-Dist: cupy>=12.0; extra == "gpu"
+Requires-Dist: numba>=0.57; extra == "gpu"
+Provides-Extra: viz
+Requires-Dist: matplotlib>=3.7; extra == "viz"
+Requires-Dist: cartopy>=0.21; extra == "viz"
+Provides-Extra: netcdf
+Requires-Dist: netCDF4>=1.6; extra == "netcdf"
+Requires-Dist: xarray>=2023.1; extra == "netcdf"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4; extra == "dev"
+Requires-Dist: hypothesis>=6.82; extra == "dev"
+Requires-Dist: pytest-cov>=4.1; extra == "dev"

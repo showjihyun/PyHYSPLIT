@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Seoul",
+    "lat": 37.5,
+    "lon": 127.0,
+    "total_points": 25,
+    "actual_points": 25,
+    "completion_rate": 100.0,
+    "expansion_count": 2,
+    "success": true
+  },
+  {
+    "name": "Beijing",
+    "lat": 39.9,
+    "lon": 116.4,
+    "total_points": 25,
+    "actual_points": 9,
+    "completion_rate": 36.0,
+    "expansion_count": 3,
+    "success": false
+  },
+  {
+    "name": "Tokyo",
+    "lat": 35.7,
+    "lon": 139.7,
+    "total_points": 25,
+    "actual_points": 23,
+    "completion_rate": 92.0,
+    "expansion_count": 3,
+    "success": false
+  },
+  {
+    "name": "Busan",
+    "lat": 35.2,
+    "lon": 129.0,
+    "total_points": 25,
+    "actual_points": 19,
+    "completion_rate": 76.0,
+    "expansion_count": 3,
+    "success": false
+  }
+]

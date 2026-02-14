@@ -1,0 +1,91 @@
+================================================================================
+HYSPLIT Web 다운로드 체크리스트
+================================================================================
+
+웹사이트: https://www.ready.noaa.gov/HYSPLIT_traj.php
+
+공통 설정:
+  [ ] Model: GFS (0.25 degree)
+  [ ] Start: 2026-02-14 00:00 UTC
+  [ ] Direction: Backward
+  [ ] Duration: 24 hours
+  [ ] Vertical Motion: Model Vertical Velocity
+  [ ] Interval: 1 hour
+
+각 지역별 다운로드:
+
+[1/8] 서울 (한국)
+  [ ] Latitude: 37.5
+  [ ] Longitude: 127.0
+  [ ] Height: 850.0 meters AGL
+  [ ] Run 클릭
+  [ ] 계산 완료 대기
+  [ ] Trajectory Endpoints 다운로드
+  [ ] tdump_서울.txt로 저장
+
+[2/8] 부산 (한국)
+  [ ] Latitude: 35.1
+  [ ] Longitude: 129.0
+  [ ] Height: 850.0 meters AGL
+  [ ] Run 클릭
+  [ ] 계산 완료 대기
+  [ ] Trajectory Endpoints 다운로드
+  [ ] tdump_부산.txt로 저장
+
+[3/8] 제주 (한국)
+  [ ] Latitude: 33.5
+  [ ] Longitude: 126.5
+  [ ] Height: 850.0 meters AGL
+  [ ] Run 클릭
+  [ ] 계산 완료 대기
+  [ ] Trajectory Endpoints 다운로드
+  [ ] tdump_제주.txt로 저장
+
+[4/8] 도쿄 (일본)
+  [ ] Latitude: 35.7
+  [ ] Longitude: 139.7
+  [ ] Height: 850.0 meters AGL
+  [ ] Run 클릭
+  [ ] 계산 완료 대기
+  [ ] Trajectory Endpoints 다운로드
+  [ ] tdump_도쿄.txt로 저장
+
+[5/8] 오사카 (일본)
+  [ ] Latitude: 34.7
+  [ ] Longitude: 135.5
+  [ ] Height: 850.0 meters AGL
+  [ ] Run 클릭
+  [ ] 계산 완료 대기
+  [ ] Trajectory Endpoints 다운로드
+  [ ] tdump_오사카.txt로 저장
+
+[6/8] 베이징 (중국)
+  [ ] Latitude: 39.9
+  [ ] Longitude: 116.4
+  [ ] Height: 850.0 meters AGL
+  [ ] Run 클릭
+  [ ] 계산 완료 대기
+  [ ] Trajectory Endpoints 다운로드
+  [ ] tdump_베이징.txt로 저장
+
+[7/8] 상하이 (중국)
+  [ ] Latitude: 31.2
+  [ ] Longitude: 121.5
+  [ ] Height: 850.0 meters AGL
+  [ ] Run 클릭
+  [ ] 계산 완료 대기
+  [ ] Trajectory Endpoints 다운로드
+  [ ] tdump_상하이.txt로 저장
+
+[8/8] 타이베이 (대만)
+  [ ] Latitude: 25.0
+  [ ] Longitude: 121.5
+  [ ] Height: 850.0 meters AGL
+  [ ] Run 클릭
+  [ ] 계산 완료 대기
+  [ ] Trajectory Endpoints 다운로드
+  [ ] tdump_타이베이.txt로 저장
+
+
+비교 실행:
+  [ ] python tests\integration\multi_location_24h_comparison.py --compare

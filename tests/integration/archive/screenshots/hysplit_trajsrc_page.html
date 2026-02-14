@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title> NOAA HYSPLIT Trajectory Model</title>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<link rel="stylesheet" href="/hypub/style.css">
+<link rel="stylesheet" href="/hypub/hysplitnoaa.css">
+<script src="/hypub/hysplit.js"></script>
+<style>
+.mapBox {
+    width: 0px;
+    display:block;
+    height: 0px;
+    z-index:1000;
+    padding:0px;
+    border: 0px solid black;
+    overflow: hidden;
+}
+</style>
+<script src="/js/jquery-3.6.1.min.js"></script>
+<script src="/hypub/tinybox.js" type="text/javascript"></script>
+<script src="/hypub/map.js" type="text/javascript"></script>
+<script id="_fed_an_ua_tag" async="" type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&amp;subagency=NOAA"></script>
+<script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-CSLL4ZEK4L"></script></head>
+
+<body onload="openClose()" topmargin="0" leftmargin="0">
+<div id="page_center">
+
+<table bgcolor="#FFFFFF">
+<tbody><tr>
+  <td>
+  <div class="clearing"></div>
+  <div class="bannerContainer">
+  <div id="screenBanner"><img src="/images/banner/ARL_banner.png" usemap="#ARLLinks" alt="Air Resources Laboratory banner image"></div>
+  </div>
+  <map name="ARLLinks">
+  <area shape="rect" coords="165,0,950,130" href="https://www.arl.noaa.gov/index.php" alt="Air Resources Laboratory web site" title="Air Resources Laboratory web site">
+  <area shape="circle" coords="73,65,60" href="https://www.noaa.gov/" alt="National Oceanic and Atmospheric Administration (NOAA)" title="National Oceanic and Atmospheric Administration (NOAA)">
+  </map>
+  <img src="/hypub/rdylogo.jpg" alt="READY logo" style="float: right;">
+  <ul class="breadcrumbs">
+        <li><a href="https://www.arl.noaa.gov">ARL Home</a></li>
+        <li>&nbsp;&gt;&nbsp;<a href="/ready.php">READY</a></li>
+        <li>&nbsp;&gt;&nbsp;<a href="/READYtransp.php">Transport &amp; Dispersion Modeling</a></li>
+        <li>&nbsp;&gt;&nbsp;<a href="/HYSPLIT.php">HYSPLIT</a></li>
+                <li>&nbsp;&gt;&nbsp;HYSPLIT Trajectory Model</li>
+      </ul>
+<div class="clearing">&nbsp;</div>
+
+<div class="page_content">
+
+<div class="floatBox" id="bestTitle">
+  <div class="left"><h1>Meteorology &amp; Starting Location(s)</h1></div>
+   <div class="clearing">&nbsp;</div>
+</div>
+
+<div class="page_content">
+
+<form id="form1" action="/hypub-bin/trajsrcm.pl" method="POST">
+
+<div>
+<h2>Trajectory Calculation</h2>
+<div class="input_section">
+
+<table>
+<tbody><tr>
+  <td><u><b>Meteorology:</b></u>&nbsp;&nbsp;&nbsp; </td>
+  <td colspan="2"><select name="metdata" size="1">
+<option value="HRRR">HRRR (18h fcst, 3 km, 1 hrly, CONUS, sigma)</option>
+<option value="NAMHUS">NAM (48h fcst, 12 km, 1 hrly, CONUS, Hyb sigma-pres)</option>
+<option value="NAMCNEST">NAM CONUS Nest (48h fcst, 3 km, 1 hrly, CONUS, Hyb sigma-pres)</option>
+<option value="NAMHFW">NAM Fire Weather (36h fcst, 1 km, 1 hrly, Moveable, Hyb sigma-pres)</option>
+<option value="NAMHHI">NAM Hawaii (48h fcst, 2.5 km, 1 hrly, Hawaii, Hyb sigma-pres)</option>
+<option value="NAMHAK">NAM Alaska (48h fcst, 12 km, 1 hrly, Alaska, Hyb sigma-pres)</option>
+<option value="NAM 12 km">NAM CONUS (84h fcst, 12 km, 3 hrly, CONUS, pressure)</option>
+<option value="GFS">GFS (240h fcst, 3 hrly, Global, pressure)</option>
+<option value="GFS0p25">GFS 0.25 Degree (84h fcst, 3 hrly, Global, Hyb sigma-pres)</option>
+      </select>
+  </td>
+  <td nowrap="">
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('Meteo','myHeader');">More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+  </td>
+</tr>
+<tr>
+  <td width="50%" colspan="7">
+     <div id="contentDiv">
+       <div id="Meteo" style="display: none;">
+        <p>Select the forecast meteorological data set from the drop-down list.  Currently, the NAM, GFS, and HRRR data are available to the user.  Details on the contents of the data sets can be found by clicking the following link.</p>
+          <a href="/hypub/hysp_metdata.html" target="_blank">/hypub/hysp_metdata.html</a><p></p>
+       </div>
+     </div>
+  </td>
+</tr>
+<tr>
+    <td></td><td><a href="/hypub-bin/domain_fw.pl" target="_blank">View Current NAM Fire Weather Domains</a></td>
+</tr>
+</tbody></table>
+<br>
+<b><u>Source Location</u></b>
+<br>
+<table>
+<tbody><tr>
+  <td>Source 1 Latitude: </td>
+<td colspan="4"><input id="LatId" type="text" name="Lat" size="7">
+<select name="Latns">
+<option selected="">N</option>
+<option>S</option>
+</select>
+  </td>
+</tr>
+<tr>
+  <td>Source 1 Longitude: </td>
+<td colspan="5"><input id="LonId" type="text" name="Lon" size="7">
+<select name="Lonew">
+<option selected="">W</option>
+<option>E</option>
+    </select>
+  </td>
+</tr>
+</tbody></table>
+<br>
+<table>
+<tbody><tr>
+  <td>Source 2 Latitude: </td>
+<td colspan="4"><input id="LatId" type="text" name="Lat2" size="7">
+<select name="Latns2">
+<option selected="">N</option>
+<option>S</option>
+</select>
+  </td>
+</tr>
+<tr>
+  <td>Source 2 Longitude: </td>
+<td colspan="5"><input id="LonId" type="text" name="Lon2" size="7">
+<select name="Lonew2">
+<option selected="">W</option>
+<option>E</option>
+    </select>
+  </td>
+</tr>
+</tbody></table>
+<br>
+<table>
+<tbody><tr>
+  <td>Source 3 Latitude: </td>
+<td colspan="4"><input id="LatId" type="text" name="Lat3" size="7">
+<select name="Latns3">
+<option selected="">N</option>
+<option>S</option>
+</select>
+  </td>
+</tr>
+<tr>
+  <td>Source 3 Longitude: </td>
+<td colspan="5"><input id="LonId" type="text" name="Lon3" size="7">
+<select name="Lonew3">
+<option selected="">W</option>
+<option>E</option>
+    </select>
+  </td>
+</tr>
+</tbody></table>
+</div><!-- class="input_section" -->
+<br>
+<center>
+<input type="reset" value="Reset Form">
+<input type="button" value="Next&gt;&gt;" onclick="isReady()">
+</center>
+
+
+</div></form><!-- class="input_section" -->
+<br>
+</div><!-- class="page_content" -->
+
+<center>
+
+
+	<table cellspacing="10" class="footer" width="95%"><tbody><tr>
+		<td><img src="/hypub/noaa_logo.gif" border="0"></td>
+		<td>
+
+	<a href="https://www.noaa.gov/organization/information-technology/privacy">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+	<a href="https://hysplitbbs.arl.noaa.gov/">Contact Us</a>
+	<br>
+		Web site owner:
+		<a href="https://www.arl.noaa.gov/">Air Resources Laboratory</a>,
+		<a href="https://research.noaa.gov/">NOAA's Office of Atmospheric Research</a>,
+		<a href="https://www.noaa.gov/">National Oceanic and Atmospheric Administration</a>.
+		</td>
+	</tr></tbody></table>
+</center>
+
+
+</div></td>
+</tr>
+</tbody></table>
+</div><!-- class="centered_content" -->
+
+<script src="/hypub/map.js"></script>
+
+
+
+</body></html>

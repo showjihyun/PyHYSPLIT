@@ -1,0 +1,141 @@
+좋습니다. 그러면 **HYSPLIT과 동일하게 궤적을 계산하려면 핵심이 되는 “풍속장 보간(Interpolation)”** 부분을 Python으로 구현하는 방법을 정리해 드릴게요.
+
+HYSPLIT에서 가장 중요한 부분은 **x → y → z → t 순서의 4차원 보간(trilinear + temporal interpolation)**입니다. 여기서 약간이라도 순서를 바꾸면 결과가 달라지므로 “완전히 동일한 궤적”을 위해 반드시 지켜야 합니다.
+
+---
+
+# 1️⃣ 기상 자료 준비
+
+HYSPLIT은 **GDAS, GFS, WRF NetCDF 등 3D 기상 자료**를 사용합니다.
+
+| 항목       | 설명                               |
+| -------- | -------------------------------- |
+| Grid     | lon, lat, z (pressure or height) |
+| Variable | u, v, w (m/s), optionally T, RH  |
+| Time     | t (초 단위)                         |
+
+> **Tip:** NetCDF/Xarray 사용 추천.
+> HYSPLIT은 내부적으로 **ARL 포맷**을 쓰지만, NetCDF를 읽어 Python 배열로 변환하면 동일하게 구현 가능
+
+```python
+import xarray as xr
+
+ds = xr.open_dataset("gdas_1deg.nc")  # 예시
+```
+
+---
+
+# 2️⃣ Trilinear 보간 함수 (x, y, z)
+
+HYSPLIT 방식과 동일하게:
+
+1. 먼저 x 방향 (longitude)
+2. 그 다음 y 방향 (latitude)
+3. 그 다음 z 방향 (height / pressure)
+
+```python
+def trilinear_interpolation(var, lon, lat, z, lon_grid, lat_grid, z_grid):
+    """
+    HYSPLIT-style trilinear interpolation
+    var       : 3D array (z, y, x)
+    lon, lat, z : target point
+    lon_grid, lat_grid, z_grid : arrays
+    """
+    # Find bounding indices
+    i = np.searchsorted(lon_grid, lon) - 1
+    j = np.searchsorted(lat_grid, lat) - 1
+    k = np.searchsorted(z_grid, z) - 1
+
+    # Fractional distances
+    xd = (lon - lon_grid[i]) / (lon_grid[i+1] - lon_grid[i])
+    yd = (lat - lat_grid[j]) / (lat_grid[j+1] - lat_grid[j])
+    zd = (z - z_grid[k]) / (z_grid[k+1] - z_grid[k])
+
+    # Corners
+    c000 = var[k  , j  , i  ]
+    c001 = var[k  , j  , i+1]
+    c010 = var[k  , j+1, i  ]
+    c011 = var[k  , j+1, i+1]
+    c100 = var[k+1, j  , i  ]
+    c101 = var[k+1, j  , i+1]
+    c110 = var[k+1, j+1, i  ]
+    c111 = var[k+1, j+1, i+1]
+
+    # Interpolate
+    c00 = c000*(1-xd) + c001*xd
+    c01 = c010*(1-xd) + c011*xd
+    c10 = c100*(1-xd) + c101*xd
+    c11 = c110*(1-xd) + c111*xd
+
+    c0 = c00*(1-yd) + c01*yd
+    c1 = c10*(1-yd) + c11*yd
+
+    c = c0*(1-zd) + c1*zd
+    return c
+```
+
+---
+
+# 3️⃣ 시간 방향 보간
+
+HYSPLIT은 **space → time 순서**로 보간합니다.
+즉, 먼저 공간(xyz) 보간 후, 그 값을 시간(t)으로 보간합니다.
+
+```python
+def hysplit_interpolate(u_arr, v_arr, w_arr, lon, lat, z, t, lon_grid, lat_grid, z_grid, t_grid):
+    """
+    HYSPLIT-style 4D interpolation
+    """
+    # Find bounding time indices
+    it = np.searchsorted(t_grid, t) - 1
+    dt_frac = (t - t_grid[it]) / (t_grid[it+1] - t_grid[it])
+
+    # Space interpolation at t[it] and t[it+1]
+    u0 = trilinear_interpolation(u_arr[it], lon, lat, z, lon_grid, lat_grid, z_grid)
+    u1 = trilinear_interpolation(u_arr[it+1], lon, lat, z, lon_grid, lat_grid, z_grid)
+    u = u0*(1-dt_frac) + u1*dt_frac
+
+    v0 = trilinear_interpolation(v_arr[it], lon, lat, z, lon_grid, lat_grid, z_grid)
+    v1 = trilinear_interpolation(v_arr[it+1], lon, lat, z, lon_grid, lat_grid, z_grid)
+    v = v0*(1-dt_frac) + v1*dt_frac
+
+    w0 = trilinear_interpolation(w_arr[it], lon, lat, z, lon_grid, lat_grid, z_grid)
+    w1 = trilinear_interpolation(w_arr[it+1], lon, lat, z, lon_grid, lat_grid, z_grid)
+    w = w0*(1-dt_frac) + w1*dt_frac
+
+    return u, v, w
+```
+
+✅ 이렇게 하면 **HYSPLIT 4D (x, y, z, t) 보간 순서와 동일**
+✅ forward/backward trajectory 모두 동일 방식 사용 가능
+
+---
+
+# 4️⃣ 사용 예시
+
+```python
+# 예시 데이터
+lon_grid = np.linspace(120, 130, 11)
+lat_grid = np.linspace(30, 40, 11)
+z_grid   = np.array([0, 100, 200, 500, 1000])
+t_grid   = np.array([0, 3600, 7200])  # seconds
+
+u_arr = np.random.rand(len(t_grid), len(z_grid), len(lat_grid), len(lon_grid))
+v_arr = np.random.rand(len(t_grid), len(z_grid), len(lat_grid), len(lon_grid))
+w_arr = np.random.rand(len(t_grid), len(z_grid), len(lat_grid), len(lon_grid))
+
+lon, lat, z, t = 123.5, 33.5, 150, 1800
+u, v, w = hysplit_interpolate(u_arr, v_arr, w_arr, lon, lat, z, t, lon_grid, lat_grid, z_grid, t_grid)
+print(u, v, w)
+```
+
+---
+
+# 5️⃣ 핵심 체크포인트 (HYSPLIT과 동일성 보장)
+
+1. **보간 순서:** x → y → z → t ✅
+2. **시간 단위:** Δt 초 단위, backward trajectory는 부호만 반전 ✅
+3. **지구 곡률 보정:** advect_lonlat 함수에서 반영 ✅
+4. **입력 격자 자료:** 반드시 NOAA ARL 또는 GDAS/GFS → Python array 변환 ✅
+
+---

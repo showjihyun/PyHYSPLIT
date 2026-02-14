@@ -1,0 +1,436 @@
+{
+  "test_info": {
+    "locations": 8,
+    "modes": 5,
+    "total_tests": 40
+  },
+  "summary": [
+    {
+      "mode": 7,
+      "mode_name": "Spatially averaged",
+      "match_rate": 62.5,
+      "direction_matches": 5,
+      "total": 8,
+      "avg_p_error": 24.89895652222839,
+      "avg_h_error": 6839.261788448235
+    },
+    {
+      "mode": 8,
+      "mode_name": "Damped magnitude",
+      "match_rate": 62.5,
+      "direction_matches": 5,
+      "total": 8,
+      "avg_p_error": 29.642511013485365,
+      "avg_h_error": 6838.385597606026
+    },
+    {
+      "mode": 0,
+      "mode_name": "Data vertical velocity",
+      "match_rate": 62.5,
+      "direction_matches": 5,
+      "total": 8,
+      "avg_p_error": 31.837969888162327,
+      "avg_h_error": 6837.977976411885
+    },
+    {
+      "mode": 1,
+      "mode_name": "Isodensity (constant density)",
+      "match_rate": 62.5,
+      "direction_matches": 5,
+      "total": 8,
+      "avg_p_error": 31.837969888162327,
+      "avg_h_error": 6837.977976411885
+    },
+    {
+      "mode": 3,
+      "mode_name": "Isentropic (constant potential temp)",
+      "match_rate": 50.0,
+      "direction_matches": 4,
+      "total": 8,
+      "avg_p_error": 33.681944444444454,
+      "avg_h_error": 6840.076359376268
+    }
+  ],
+  "detailed_results": {
+    "0": {
+      "서울": {
+        "py_change": 0.27179299684428315,
+        "hy_change": 25.600000000000023,
+        "direction_match": true,
+        "mean_p_error": 12.870255101302746,
+        "mean_h_error": 6839.434122946179,
+        "success": true
+      },
+      "부산": {
+        "py_change": -42.76876040423406,
+        "hy_change": -40.5,
+        "direction_match": true,
+        "mean_p_error": 35.717308696913996,
+        "mean_h_error": 6864.537566156947,
+        "success": true
+      },
+      "제주": {
+        "py_change": -26.595206458620964,
+        "hy_change": 59.39999999999998,
+        "direction_match": false,
+        "mean_p_error": 36.31383604818091,
+        "mean_h_error": 6934.305902718303,
+        "success": true
+      },
+      "도쿄": {
+        "py_change": -49.62878018820447,
+        "hy_change": -18.90000000000009,
+        "direction_match": true,
+        "mean_p_error": 18.954691436575065,
+        "mean_h_error": 6436.530091149386,
+        "success": true
+      },
+      "오사카": {
+        "py_change": -58.75328747927961,
+        "hy_change": -8.799999999999955,
+        "direction_match": true,
+        "mean_p_error": 16.20912922501269,
+        "mean_h_error": 6627.261794509067,
+        "success": true
+      },
+      "베이징": {
+        "py_change": -192.71420694564677,
+        "hy_change": -132.30000000000007,
+        "direction_match": true,
+        "mean_p_error": 37.972100560514754,
+        "mean_h_error": 6622.068167380968,
+        "success": true
+      },
+      "상하이": {
+        "py_change": -39.531284466608554,
+        "hy_change": 43.700000000000045,
+        "direction_match": false,
+        "mean_p_error": 68.3288017709793,
+        "mean_h_error": 7073.984215389041,
+        "success": true
+      },
+      "타이베이": {
+        "py_change": -8.286832668924035,
+        "hy_change": 28.40000000000009,
+        "direction_match": false,
+        "mean_p_error": 28.337636265819153,
+        "mean_h_error": 7305.701951045189,
+        "success": true
+      }
+    },
+    "1": {
+      "서울": {
+        "py_change": 0.27179299684428315,
+        "hy_change": 25.600000000000023,
+        "direction_match": true,
+        "mean_p_error": 12.870255101302746,
+        "mean_h_error": 6839.434122946179,
+        "success": true
+      },
+      "부산": {
+        "py_change": -42.76876040423406,
+        "hy_change": -40.5,
+        "direction_match": true,
+        "mean_p_error": 35.717308696913996,
+        "mean_h_error": 6864.537566156947,
+        "success": true
+      },
+      "제주": {
+        "py_change": -26.595206458620964,
+        "hy_change": 59.39999999999998,
+        "direction_match": false,
+        "mean_p_error": 36.31383604818091,
+        "mean_h_error": 6934.305902718303,
+        "success": true
+      },
+      "도쿄": {
+        "py_change": -49.62878018820447,
+        "hy_change": -18.90000000000009,
+        "direction_match": true,
+        "mean_p_error": 18.954691436575065,
+        "mean_h_error": 6436.530091149386,
+        "success": true
+      },
+      "오사카": {
+        "py_change": -58.75328747927961,
+        "hy_change": -8.799999999999955,
+        "direction_match": true,
+        "mean_p_error": 16.20912922501269,
+        "mean_h_error": 6627.261794509067,
+        "success": true
+      },
+      "베이징": {
+        "py_change": -192.71420694564677,
+        "hy_change": -132.30000000000007,
+        "direction_match": true,
+        "mean_p_error": 37.972100560514754,
+        "mean_h_error": 6622.068167380968,
+        "success": true
+      },
+      "상하이": {
+        "py_change": -39.531284466608554,
+        "hy_change": 43.700000000000045,
+        "direction_match": false,
+        "mean_p_error": 68.3288017709793,
+        "mean_h_error": 7073.984215389041,
+        "success": true
+      },
+      "타이베이": {
+        "py_change": -8.286832668924035,
+        "hy_change": 28.40000000000009,
+        "direction_match": false,
+        "mean_p_error": 28.337636265819153,
+        "mean_h_error": 7305.701951045189,
+        "success": true
+      }
+    },
+    "3": {
+      "서울": {
+        "py_change": 0.0,
+        "hy_change": 25.600000000000023,
+        "direction_match": true,
+        "mean_p_error": 12.2555555555556,
+        "mean_h_error": 6839.253852798414,
+        "success": true
+      },
+      "부산": {
+        "py_change": 0.0,
+        "hy_change": -40.5,
+        "direction_match": false,
+        "mean_p_error": 43.1444444444444,
+        "mean_h_error": 6865.406776149822,
+        "success": true
+      },
+      "제주": {
+        "py_change": 0.0,
+        "hy_change": 59.39999999999998,
+        "direction_match": true,
+        "mean_p_error": 20.644444444444463,
+        "mean_h_error": 6936.6473445053525,
+        "success": true
+      },
+      "도쿄": {
+        "py_change": 0.0,
+        "hy_change": -18.90000000000009,
+        "direction_match": false,
+        "mean_p_error": 7.300000000000056,
+        "mean_h_error": 6436.7908649465735,
+        "success": true
+      },
+      "오사카": {
+        "py_change": 0.0,
+        "hy_change": -8.799999999999955,
+        "direction_match": false,
+        "mean_p_error": 7.6555555555555275,
+        "mean_h_error": 6627.522777507696,
+        "success": true
+      },
+      "베이징": {
+        "py_change": 0.0,
+        "hy_change": -132.30000000000007,
+        "direction_match": false,
+        "mean_p_error": 94.4111111111111,
+        "mean_h_error": 6632.271237793658,
+        "success": true
+      },
+      "상하이": {
+        "py_change": 0.0,
+        "hy_change": 43.700000000000045,
+        "direction_match": true,
+        "mean_p_error": 45.2444444444445,
+        "mean_h_error": 7077.161782264474,
+        "success": true
+      },
+      "타이베이": {
+        "py_change": 0.0,
+        "hy_change": 28.40000000000009,
+        "direction_match": true,
+        "mean_p_error": 38.80000000000004,
+        "mean_h_error": 7305.556239044152,
+        "success": true
+      }
+    },
+    "7": {
+      "서울": {
+        "py_change": 9.839472542952421,
+        "hy_change": 25.600000000000023,
+        "direction_match": true,
+        "mean_p_error": 7.485732519733347,
+        "mean_h_error": 6839.945924651852,
+        "success": true
+      },
+      "부산": {
+        "py_change": -43.8312691260835,
+        "hy_change": -40.5,
+        "direction_match": true,
+        "mean_p_error": 28.553558651677967,
+        "mean_h_error": 6864.331652638698,
+        "success": true
+      },
+      "제주": {
+        "py_change": -24.48275804506477,
+        "hy_change": 59.39999999999998,
+        "direction_match": false,
+        "mean_p_error": 31.913329845322664,
+        "mean_h_error": 6935.448932001132,
+        "success": true
+      },
+      "도쿄": {
+        "py_change": -44.548552027453525,
+        "hy_change": -18.90000000000009,
+        "direction_match": true,
+        "mean_p_error": 15.87697133539992,
+        "mean_h_error": 6436.123199276635,
+        "success": true
+      },
+      "오사카": {
+        "py_change": -28.775105579704814,
+        "hy_change": -8.799999999999955,
+        "direction_match": true,
+        "mean_p_error": 8.04628230898657,
+        "mean_h_error": 6627.7403837949405,
+        "success": true
+      },
+      "베이징": {
+        "py_change": -115.60297256951822,
+        "hy_change": -132.30000000000007,
+        "direction_match": true,
+        "mean_p_error": 18.22045935205981,
+        "mean_h_error": 6629.993349645283,
+        "success": true
+      },
+      "상하이": {
+        "py_change": -17.38008568881105,
+        "hy_change": 43.700000000000045,
+        "direction_match": false,
+        "mean_p_error": 53.7779152450922,
+        "mean_h_error": 7075.232861606409,
+        "success": true
+      },
+      "타이베이": {
+        "py_change": -1.3044436635937018,
+        "hy_change": 28.40000000000009,
+        "direction_match": false,
+        "mean_p_error": 35.31740291955464,
+        "mean_h_error": 7305.2780039709305,
+        "success": true
+      }
+    },
+    "8": {
+      "서울": {
+        "py_change": 0.3518392043233689,
+        "hy_change": 25.600000000000023,
+        "direction_match": true,
+        "mean_p_error": 12.861361078249514,
+        "mean_h_error": 6839.4342824558435,
+        "success": true
+      },
+      "부산": {
+        "py_change": -42.13488134890213,
+        "hy_change": -40.5,
+        "direction_match": true,
+        "mean_p_error": 35.40582208560352,
+        "mean_h_error": 6864.526418472068,
+        "success": true
+      },
+      "제주": {
+        "py_change": -26.595206458620964,
+        "hy_change": 59.39999999999998,
+        "direction_match": false,
+        "mean_p_error": 36.31383604818091,
+        "mean_h_error": 6934.305902718303,
+        "success": true
+      },
+      "도쿄": {
+        "py_change": -43.404462110580084,
+        "hy_change": -18.90000000000009,
+        "direction_match": true,
+        "mean_p_error": 16.332539604829055,
+        "mean_h_error": 6436.41631105552,
+        "success": true
+      },
+      "오사카": {
+        "py_change": -60.786061441734205,
+        "hy_change": -8.799999999999955,
+        "direction_match": true,
+        "mean_p_error": 16.531872920607473,
+        "mean_h_error": 6627.223351708201,
+        "success": true
+      },
+      "베이징": {
+        "py_change": -154.30633032241906,
+        "hy_change": -132.30000000000007,
+        "direction_match": true,
+        "mean_p_error": 23.02821833361399,
+        "mean_h_error": 6625.492348004044,
+        "success": true
+      },
+      "상하이": {
+        "py_change": -39.531284466608554,
+        "hy_change": 43.700000000000045,
+        "direction_match": false,
+        "mean_p_error": 68.3288017709793,
+        "mean_h_error": 7073.984215389041,
+        "success": true
+      },
+      "타이베이": {
+        "py_change": -8.286832668924035,
+        "hy_change": 28.40000000000009,
+        "direction_match": false,
+        "mean_p_error": 28.337636265819153,
+        "mean_h_error": 7305.701951045189,
+        "success": true
+      }
+    }
+  },
+  "location_best": {
+    "서울": {
+      "mode": 7,
+      "direction_match": true,
+      "p_error": 7.485732519733347,
+      "h_error": 6839.945924651852
+    },
+    "부산": {
+      "mode": 7,
+      "direction_match": true,
+      "p_error": 28.553558651677967,
+      "h_error": 6864.331652638698
+    },
+    "제주": {
+      "mode": 3,
+      "direction_match": true,
+      "p_error": 20.644444444444463,
+      "h_error": 6936.6473445053525
+    },
+    "도쿄": {
+      "mode": 7,
+      "direction_match": true,
+      "p_error": 15.87697133539992,
+      "h_error": 6436.123199276635
+    },
+    "오사카": {
+      "mode": 7,
+      "direction_match": true,
+      "p_error": 8.04628230898657,
+      "h_error": 6627.7403837949405
+    },
+    "베이징": {
+      "mode": 7,
+      "direction_match": true,
+      "p_error": 18.22045935205981,
+      "h_error": 6629.993349645283
+    },
+    "상하이": {
+      "mode": 3,
+      "direction_match": true,
+      "p_error": 45.2444444444445,
+      "h_error": 7077.161782264474
+    },
+    "타이베이": {
+      "mode": 3,
+      "direction_match": true,
+      "p_error": 38.80000000000004,
+      "h_error": 7305.556239044152
+    }
+  }
+}

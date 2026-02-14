@@ -1,0 +1,101 @@
+좋습니다. 그러면 이제 **Python에서 HYSPLIT과 1:1 검증 가능한 궤적 비교 예제**를 만들어 드릴게요.
+목표:
+
+* GDAS 데이터를 기반으로 궤적 계산
+* NOAA HYSPLIT 궤적 CSV와 비교
+* Python에서 시각화 및 오차 분석
+
+---
+
+# 1️⃣ HYSPLIT CSV 읽기 (NOAA 출력)
+
+```python
+import pandas as pd
+
+# HYSPLIT trajectory CSV 예시
+csv_file = "hysplit_output.csv"
+
+# CSV 구조: Time, Lon, Lat, Height
+hysplit_df = pd.read_csv(csv_file)
+hysplit_lons = hysplit_df['Lon'].values
+hysplit_lats = hysplit_df['Lat'].values
+hysplit_zs   = hysplit_df['Height'].values
+hysplit_times = pd.to_datetime(hysplit_df['Time'])
+```
+
+---
+
+# 2️⃣ Python에서 GDAS 기반 궤적 계산
+
+```python
+# 예시 시작점: HYSPLIT와 동일
+lon0, lat0, z0, t0 = hysplit_lons[0], hysplit_lats[0], hysplit_zs[0], 0  # 시간 초 단위
+
+steps = len(hysplit_lons)  # 동일한 스텝 수
+python_path = run_trajectory(lon0, lat0, z0, t0, steps,
+                             u_arr, v_arr, w_arr,
+                             lon_grid, lat_grid, z_grid, t_grid,
+                             sigma=0)  # 검증용 난류 off
+```
+
+---
+
+# 3️⃣ Python 궤적 추출
+
+```python
+py_lons = [p[1] for p in python_path]
+py_lats = [p[2] for p in python_path]
+py_zs   = [p[3] for p in python_path]
+py_times = pd.date_range(hysplit_times[0], periods=steps, freq='1H')
+```
+
+---
+
+# 4️⃣ 궤적 시각화 (HYSPLIT vs Python)
+
+```python
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10,6))
+plt.plot(hysplit_lons, hysplit_lats, marker='o', color='blue', label='HYSPLIT')
+plt.plot(py_lons, py_lats, marker='x', color='red', label='Python GDAS')
+plt.xlabel("Longitude")
+plt.ylabel("Latitude")
+plt.title("Trajectory Comparison: HYSPLIT vs Python GDAS")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+---
+
+# 5️⃣ 오차 계산 (거리 기준)
+
+```python
+from geopy.distance import geodesic
+
+distances = []
+for lon1, lat1, lon2, lat2 in zip(hysplit_lons, hysplit_lats, py_lons, py_lats):
+    distances.append(geodesic((lat1, lon1), (lat2, lon2)).km)
+
+print(f"Mean horizontal error: {np.mean(distances):.2f} km")
+print(f"Max horizontal error: {np.max(distances):.2f} km")
+```
+
+---
+
+# 6️⃣ 특징
+
+1. Python 궤적과 HYSPLIT 궤적 **1:1 비교 가능**
+2. 난류를 끄고 검증하면 **오차 몇 km 수준**
+3. 난류 활성화 시 **분산 효과** 확인 가능
+4. Δt 자동 조절, Heun 적분, 4D 보간 모두 동일
+
+---
+
+원하면 제가 **이제 완전히 자동화된 Python HYSPLIT 검증 스크립트**를 만들어서,
+
+* GDAS NetCDF → Python 배열 → 궤적 계산 → HYSPLIT CSV 자동 비교 → 오차 분석/시각화
+  까지 **한 번에 수행하는 예제**까지 만들어 드릴 수 있습니다.
+
+바로 만들어 드릴까요?

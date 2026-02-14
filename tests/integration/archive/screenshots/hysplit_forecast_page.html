@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title> NOAA HYSPLIT Trajectory Model</title>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+
+<link rel="stylesheet" href="/hypub/style.css">
+<link rel="stylesheet" href="/hypub/hysplitnoaa.css">
+<script src="/hypub/hysplit.js"></script>
+<script id="_fed_an_ua_tag" async="" type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&amp;subagency=NOAA"></script>
+<script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-CSLL4ZEK4L"></script></head>
+
+<body topmargin="0" leftmargin="0">
+
+<div id="page_center">
+
+<table bgcolor="#FFFFFF">
+<tbody><tr>
+  <td>
+  <div class="clearing"></div>
+  <div class="bannerContainer">
+  <div id="screenBanner"><img src="/images/banner/ARL_banner.png" usemap="#ARLLinks" alt="Air Resources Laboratory banner image"></div>
+  </div>
+  <map name="ARLLinks">
+  <area shape="rect" coords="165,0,950,130" href="https://www.arl.noaa.gov/index.php" alt="Air Resources Laboratory web site" title="Air Resources Laboratory web site">
+  <area shape="circle" coords="73,65,60" href="https://www.noaa.gov/" alt="National Oceanic and Atmospheric Administration (NOAA)" title="National Oceanic and Atmospheric Administration (NOAA)">
+  </map>
+  <img src="/hypub/rdylogo.jpg" alt="READY logo" style="float: right;">
+  <ul class="breadcrumbs">
+        <li><a href="https://www.arl.noaa.gov">ARL Home</a></li>
+        <li>&nbsp;&gt;&nbsp;<a href="/ready.php">READY</a></li>
+        <li>&nbsp;&gt;&nbsp;<a href="/READYtransp.php">Transport &amp; Dispersion Modeling</a></li>
+        <li>&nbsp;&gt;&nbsp;<a href="/HYSPLIT.php">HYSPLIT</a></li>
+
+                <li>&nbsp;&gt;&nbsp;HYSPLIT Trajectory Model</li>
+      </ul>
+<div class="clearing">&nbsp;</div>
+
+<div class="center">
+  <h2>READY users produced 1748
+ un-registered HYSPLIT simulations since 00 UTC today!</h2>
+</div>
+<div class="clearing">&nbsp;</div>
+
+<div class="page_content">
+
+<div class="floatBox" id="bestTitle">
+  <div class="left"><h1>Type of Trajectory(ies)</h1></div>
+   <div class="clearing">&nbsp;</div>
+</div>
+
+<form action="/hypub-bin/trajsrc.pl" method="POST">
+
+<div class="input_section">
+
+<table>
+<tbody><tr>
+  <td><u><b>Number of Trajectory Starting Locations</b></u>&nbsp;&nbsp;&nbsp;</td>
+  <td>
+<b><input type="RADIO" name="nsrc" value="1" checked="">1</b>
+<b><input type="RADIO" name="nsrc" value="2">2</b>
+<b><input type="RADIO" name="nsrc" value="3">3</b>
+  </td>
+  <td>Note:  By choosing just one source location,
+    more options for selecting the location will be presented on the
+    next page, such as choosing by latitude/longitude, by WMO ID, or
+    by plant location.  Multiple source locations limit the input
+    to just latitude/longitude positions. This option is ignored for
+    trajectory ensemble and frequency.</td>
+</tr>
+<tr>
+  <td nowrap=""><u><b>Type of Trajectory</b></u>&nbsp;&nbsp;&nbsp; </td>
+  <td colspan="2">
+<input type="RADIO" name="trjtype" value="1" checked=""><b>Normal</b>
+<input type="RADIO" name="trjtype" value="2"><b>Matrix</b>
+<input type="RADIO" name="trjtype" value="3"><b>Ensemble</b>
+<input type="RADIO" name="trjtype" value="5"><b>Frequency</b>
+</td>
+</tr>
+</tbody></table>
+</div><!-- class="input_section" -->
+<center>
+ <input type="submit" value="Next&gt;&gt;">
+</center>
+<hr>
+<br>
+<h1>Details</h1>
+<table>
+<tbody><tr>
+<td>
+<br><h2>Trajectory Matrix</h2>
+<p>The trajectory matrix option will run a grid of
+trajectories bounded by the first 2 source locations (trajectory
+1 is the lower left grid point and trajectory 2 is the upper
+right grid point) and evenly spaced with a grid increment given
+by the distance between the lower left grid point (trajectory 2) 
+and trajectory 3.  Only one height is allowed.</p>
+</td>
+<td><img src="/hypub/matrixex.gif" border="1"></td>
+</tr>
+<tr>
+<td>
+<br><h2>Trajectory Ensemble</h2>
+<p>The trajectory ensemble option will start multiple trajectories
+from the first selected starting location.  Each member of the trajectory
+ensemble is calculated by offsetting the meteorological data by a fixed
+grid factor (one grid meteorological grid point in the horizontal and
+0.01 sigma units in the vertical).  This results in 27 members for
+all-possible offsets in X,Y, and Z.  Note: the starting height should
+be greater than 250 m for optimal configuration of the ensemble.
+</p>
+</td>
+<td><img src="/hypub/ensemex.gif" border="1"></td>
+</tr>
+<tr>
+<td>
+<br><h2>Trajectory Frequency</h2>
+<p>The trajectory frequency option will start a trajectory from a single
+location and height every 6 hours and then sum the frequency that the
+trajectory passed over a grid cell and then normalize by either the
+total number of trajectories or endpoints. A trajectory may intersect
+a grid cell once or multiple times (with residence time options 1, 2 or 3). 
+</p>
+</td>
+<td><img src="/hypub/trajfreqex.gif" border="1"></td>
+</tr>
+</tbody></table>
+
+</form>
+</div><!-- class="page_content" -->
+
+<center>
+
+
+	<table cellspacing="10" class="footer" width="95%"><tbody><tr>
+		<td><img src="/hypub/noaa_logo.gif" border="0"></td>
+		<td>
+
+	<a href="https://www.noaa.gov/organization/information-technology/privacy">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+	<a href="https://hysplitbbs.arl.noaa.gov/">Contact Us</a>
+	<br>
+		Web site owner:
+		<a href="https://www.arl.noaa.gov/">Air Resources Laboratory</a>,
+		<a href="https://research.noaa.gov/">NOAA's Office of Atmospheric Research</a>,
+		<a href="https://www.noaa.gov/">National Oceanic and Atmospheric Administration</a>.
+		</td>
+	</tr></tbody></table>
+</center>
+
+
+</td>
+</tr>
+</tbody></table>
+</div><!-- class="centered_content" -->
+
+
+
+</body></html>

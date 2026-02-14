@@ -1,0 +1,149 @@
+[
+  {
+    "name": "Seoul",
+    "lat": 37.5,
+    "lon": 127.0,
+    "completion_rate": 100.0,
+    "num_points": 25,
+    "total_distance_km": 0.43882430919053755,
+    "lon_range": [
+      126.99454485119429,
+      127.00354223375376
+    ],
+    "lat_range": [
+      37.4943085438444,
+      37.50214547628721
+    ],
+    "pressure_range": [
+      871.7757387048931,
+      907.3
+    ],
+    "success": true
+  },
+  {
+    "name": "Busan",
+    "lat": 35.2,
+    "lon": 129.0,
+    "completion_rate": 100.0,
+    "num_points": 25,
+    "total_distance_km": 0.5926404807535728,
+    "lon_range": [
+      128.99283431827513,
+      129.0067481227603
+    ],
+    "lat_range": [
+      35.18795526892927,
+      35.2
+    ],
+    "pressure_range": [
+      864.0860320156352,
+      913.4106098037394
+    ],
+    "success": true
+  },
+  {
+    "name": "Tokyo",
+    "lat": 35.7,
+    "lon": 139.7,
+    "completion_rate": 100.0,
+    "num_points": 25,
+    "total_distance_km": 1.0729387092060114,
+    "lon_range": [
+      139.68696361464504,
+      139.70013324074176
+    ],
+    "lat_range": [
+      35.68374050935208,
+      35.7
+    ],
+    "pressure_range": [
+      906.2069964046362,
+      942.8338441324192
+    ],
+    "success": true
+  },
+  {
+    "name": "Beijing",
+    "lat": 39.9,
+    "lon": 116.4,
+    "completion_rate": 100.0,
+    "num_points": 25,
+    "total_distance_km": 1.7505597731138067,
+    "lon_range": [
+      116.37784733765045,
+      116.40464313811287
+    ],
+    "lat_range": [
+      39.89470116399042,
+      39.9069905124166
+    ],
+    "pressure_range": [
+      903.9186704546979,
+      929.6679776260959
+    ],
+    "success": true
+  },
+  {
+    "name": "Shanghai",
+    "lat": 31.2,
+    "lon": 121.5,
+    "completion_rate": 100.0,
+    "num_points": 25,
+    "total_distance_km": 2.0875184536763904,
+    "lon_range": [
+      121.48522497561885,
+      121.50682097586048
+    ],
+    "lat_range": [
+      31.196586902890317,
+      31.224564421348646
+    ],
+    "pressure_range": [
+      871.1825710534647,
+      908.4475409334324
+    ],
+    "success": true
+  },
+  {
+    "name": "Taipei",
+    "lat": 25.0,
+    "lon": 121.5,
+    "completion_rate": 100.0,
+    "num_points": 25,
+    "total_distance_km": 0.7488426793868388,
+    "lon_range": [
+      121.49776282491484,
+      121.51625813344441
+    ],
+    "lat_range": [
+      24.999041006823404,
+      25.010198342739386
+    ],
+    "pressure_range": [
+      866.9628870010943,
+      910.8803940478655
+    ],
+    "success": true
+  },
+  {
+    "name": "Hong Kong",
+    "lat": 22.3,
+    "lon": 114.2,
+    "completion_rate": 100.0,
+    "num_points": 25,
+    "total_distance_km": 0.854896873624175,
+    "lon_range": [
+      114.19206477118166,
+      114.207232538347
+    ],
+    "lat_range": [
+      22.284276333165394,
+      22.3
+    ],
+    "pressure_range": [
+      874.9525079930697,
+      914.9803614018762
+    ],
+    "success": true
+  }
+]

@@ -1,0 +1,202 @@
+{
+  "서울": {
+    "start": {
+      "lat": 37.5,
+      "lon": 127.0,
+      "height": 887.179560624821,
+      "time": "2026-02-14T00:00:00"
+    },
+    "end": {
+      "lat": 43.075902416405086,
+      "lon": 120.4259595465004,
+      "height": 2102.756777379097,
+      "time": "2026-02-13T00:00:00"
+    },
+    "total_distance": 833.322377329867,
+    "height_change": 1215.577216754276,
+    "avg_speed": 34.72176572207779,
+    "direction": "서쪽",
+    "num_points": 25,
+    "hysplit_comparison": {
+      "mean_horizontal_error": 35.43031139824574,
+      "mean_vertical_error": 12.870255101302746,
+      "max_horizontal_error": 127.74019288165374,
+      "max_vertical_error": 24.32820700315574
+    }
+  },
+  "부산": {
+    "start": {
+      "lat": 35.1,
+      "lon": 129.0,
+      "height": 897.0116720831911,
+      "time": "2026-02-14T00:00:00"
+    },
+    "end": {
+      "lat": 39.83080988916214,
+      "lon": 123.1008793458027,
+      "height": 2644.293386292462,
+      "time": "2026-02-13T00:00:00"
+    },
+    "total_distance": 739.7804646316904,
+    "height_change": 1747.2817142092708,
+    "avg_speed": 30.824186026320433,
+    "direction": "서쪽",
+    "num_points": 25,
+    "hysplit_comparison": {
+      "mean_horizontal_error": 58.75916708488527,
+      "mean_vertical_error": 35.717308696913996,
+      "max_horizontal_error": 136.06088123820211,
+      "max_vertical_error": 76.1648376517461
+    }
+  },
+  "제주": {
+    "start": {
+      "lat": 33.5,
+      "lon": 126.5,
+      "height": 906.5293461861148,
+      "time": "2026-02-14T00:00:00"
+    },
+    "end": {
+      "lat": 38.31264019288298,
+      "lon": 123.30682997541004,
+      "height": 1869.7712286948986,
+      "time": "2026-02-13T00:00:00"
+    },
+    "total_distance": 607.4156738024091,
+    "height_change": 963.2418825087838,
+    "avg_speed": 25.30898640843371,
+    "direction": "북쪽",
+    "num_points": 25,
+    "hysplit_comparison": {
+      "mean_horizontal_error": 46.98182581168855,
+      "mean_vertical_error": 36.31383604818091,
+      "max_horizontal_error": 150.32873364038375,
+      "max_vertical_error": 67.89520645862103
+    }
+  },
+  "도쿄": {
+    "start": {
+      "lat": 35.7,
+      "lon": 139.7,
+      "height": 895.0458059399401,
+      "time": "2026-02-14T00:00:00"
+    },
+    "end": {
+      "lat": 37.146085994350926,
+      "lon": 133.542571335881,
+      "height": 1873.7198683928623,
+      "time": "2026-02-13T00:00:00"
+    },
+    "total_distance": 573.7865232701737,
+    "height_change": 978.6740624529222,
+    "avg_speed": 23.907771802923904,
+    "direction": "서쪽",
+    "num_points": 25,
+    "hysplit_comparison": {
+      "mean_horizontal_error": 55.66516547355054,
+      "mean_vertical_error": 18.954691436575065,
+      "max_horizontal_error": 149.95746527362286,
+      "max_vertical_error": 39.12878018820447
+    }
+  },
+  "오사카": {
+    "start": {
+      "lat": 34.7,
+      "lon": 135.5,
+      "height": 897.3715919202831,
+      "time": "2026-02-14T00:00:00"
+    },
+    "end": {
+      "lat": 35.20215015343712,
+      "lon": 132.87306811464998,
+      "height": 1322.1895890676028,
+      "time": "2026-02-13T00:00:00"
+    },
+    "total_distance": 245.83479427447364,
+    "height_change": 424.8179971473197,
+    "avg_speed": 10.243116428103068,
+    "direction": "서쪽",
+    "num_points": 25,
+    "hysplit_comparison": {
+      "mean_horizontal_error": 16.543938646883554,
+      "mean_vertical_error": 16.20912922501269,
+      "max_horizontal_error": 29.7076989682707,
+      "max_vertical_error": 54.053287479279675
+    }
+  },
+  "베이징": {
+    "start": {
+      "lat": 39.9,
+      "lon": 116.4,
+      "height": 909.0004927296533,
+      "time": "2026-02-14T00:00:00"
+    },
+    "end": {
+      "lat": 45.24607186715673,
+      "lon": 110.00123387187034,
+      "height": 3077.792066434078,
+      "time": "2026-02-13T05:47:45"
+    },
+    "total_distance": 791.8871091006326,
+    "height_change": 2168.791573704425,
+    "avg_speed": 41.678268900033295,
+    "direction": "서쪽",
+    "num_points": 20,
+    "hysplit_comparison": {
+      "mean_horizontal_error": 86.77432766593223,
+      "mean_vertical_error": 37.972100560514754,
+      "max_horizontal_error": 183.02167066718286,
+      "max_vertical_error": 63.81420694564679
+    }
+  },
+  "상하이": {
+    "start": {
+      "lat": 31.2,
+      "lon": 121.5,
+      "height": 916.5526775480752,
+      "time": "2026-02-14T00:00:00"
+    },
+    "end": {
+      "lat": 34.34145411015382,
+      "lon": 122.49644948566817,
+      "height": 1194.9811399824937,
+      "time": "2026-02-13T00:00:00"
+    },
+    "total_distance": 361.51760370458726,
+    "height_change": 278.4284624344185,
+    "avg_speed": 15.063233487691136,
+    "direction": "북쪽",
+    "num_points": 25,
+    "hysplit_comparison": {
+      "mean_horizontal_error": 22.902339535367858,
+      "mean_vertical_error": 68.3288017709793,
+      "max_horizontal_error": 34.59771464929743,
+      "max_vertical_error": 92.77912206531312
+    }
+  },
+  "타이베이": {
+    "start": {
+      "lat": 25.0,
+      "lon": 121.5,
+      "height": 934.0462002259686,
+      "time": "2026-02-14T00:00:00"
+    },
+    "end": {
+      "lat": 26.5445852480141,
+      "lon": 122.9268997438005,
+      "height": 113.75373720826897,
+      "time": "2026-02-13T00:00:00"
+    },
+    "total_distance": 223.40751717155646,
+    "height_change": -820.2924630176997,
+    "avg_speed": 9.308646548814853,
+    "direction": "북쪽",
+    "num_points": 25,
+    "hysplit_comparison": {
+      "mean_horizontal_error": 23.41522308073544,
+      "mean_vertical_error": 28.337636265819153,
+      "max_horizontal_error": 43.588661629153144,
+      "max_vertical_error": 47.43614940275313
+    }
+  }
+}

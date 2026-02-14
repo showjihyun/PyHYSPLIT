@@ -1,0 +1,146 @@
+아래는 **HYSPLIT 궤적 추적을 “완전히 동일하게” 구현하기 위해 읽어야 할 문헌을
+이해 흐름 기준으로 정렬한 공식 로드맵**입니다.
+(📌 *위에서 아래 순서대로 읽으면 그대로 구현 단계로 연결됩니다*)
+
+---
+
+# 1️⃣ 원전(原典) — HYSPLIT의 설계 철학과 알고리즘 정의서
+
+## 📄 Stein et al. (2015) — *가장 중요, 반드시 1순위*
+
+**NOAA’s HYSPLIT Atmospheric Transport and Dispersion Modeling System**
+
+* Journal: *Bulletin of the American Meteorological Society*
+* DOI: **10.1175/BAMS-D-14-00110.1**
+* 링크: [https://doi.org/10.1175/BAMS-D-14-00110.1](https://doi.org/10.1175/BAMS-D-14-00110.1)
+
+### 왜 1번인가?
+
+* HYSPLIT의 **공식 레퍼런스 논문**
+* 궤적 계산 방식, 시간 적분, 기상자료 처리, 좌표계가 **명시적으로 설명됨**
+* “HYSPLIT은 무엇을 계산하는가”에 대한 최종 정의서
+
+📌 **이 논문을 기준으로 구현하면 ‘HYSPLIT compatible’이라 말할 수 있음**
+
+---
+
+# 2️⃣ 구현 세부 — 궤적 계산 로직의 실제 모습
+
+## 📄 Draxler & Hess (1998)
+
+**An overview of the HYSPLIT_4 modeling system for trajectories, dispersion, and deposition**
+
+* Journal: *Australian Meteorological Magazine*
+* DOI: ❌ (당시 DOI 미부여, NOAA 기술논문 계열)
+* PDF (NOAA/ResearchGate):
+  [https://www.researchgate.net/publication/235961417](https://www.researchgate.net/publication/235961417)
+
+### 여기서 얻는 것
+
+* **궤적 적분 방식의 실제 구조**
+* HYSPLIT이 사용하는 **Modified Euler (Heun) 방식**
+* 수직 좌표 처리(pressure ↔ height)
+
+📌 *Stein(2015)이 “무엇을” 설명한다면,
+Draxler(1998)은 “어떻게”를 보여줍니다.*
+
+---
+
+# 3️⃣ 내부 구현 기준 — 코드와 1:1로 대응되는 문서
+
+## 📘 HYSPLIT-4 User’s Guide (1999)
+
+* 저자: R. R. Draxler
+* NOAA Technical Memorandum
+* 링크: [https://www.arl.noaa.gov/documents/reports/hysplit_user_guide.pdf](https://www.arl.noaa.gov/documents/reports/hysplit_user_guide.pdf)
+
+### 이 문서의 역할
+
+* 실제 HYSPLIT 소스코드와 **완전히 대응**
+* 다음이 명확히 나와 있음:
+
+  * 시간 step 선택 규칙
+  * 기상장 보간 순서 (x → y → z → t)
+  * backward trajectory 계산 방식
+  * 좌표 clipping / boundary 처리
+
+📌 **“논문 + 구현” 사이의 빈틈을 메워주는 문서**
+
+---
+
+# 4️⃣ 수치해석 핵심 — 궤적 적분 방법의 이론적 근거
+
+## 📄 관련 수치적분 설명 (Heun / Modified Euler)
+
+* HYSPLIT 궤적 공식은 다음 구조:
+
+[
+x_{t+\Delta t} = x_t + \frac{1}{2}\left( V(x_t,t) + V(x'_t,t+\Delta t) \right)\Delta t
+]
+
+* 2-step predictor–corrector 방식
+
+이 적분 방식은 여러 논문에서 HYSPLIT 방식으로 인용됨
+
+📌 **Runge-Kutta 4가 아님** →
+“완전히 동일”하려면 반드시 **Heun 방식**을 써야 함
+
+---
+
+# 5️⃣ 운영 시스템 — 실제 NOAA에서 어떻게 쓰는가
+
+## 📄 Rolph et al. (2017)
+
+**The NOAA HYSPLIT model and the READY system**
+
+* Journal: *Environmental Modelling & Software*
+* DOI: **10.1016/j.envsoft.2017.06.025**
+* 링크: [https://doi.org/10.1016/j.envsoft.2017.06.025](https://doi.org/10.1016/j.envsoft.2017.06.025)
+
+### 역할
+
+* 실시간 궤적 계산 시:
+
+  * 시간 step 자동 조절
+  * backward trajectory 안정성 처리
+* READY 시스템과의 연계 방식
+
+📌 *운영 레벨 구현 시 참고*
+
+---
+
+# 🔢 최종 정독 순서 (요약)
+
+| 순서    | 문헌                    | 목적            |
+| ----- | --------------------- | ------------- |
+| **1** | Stein et al. (2015)   | HYSPLIT 공식 정의 |
+| **2** | Draxler & Hess (1998) | 궤적 계산 구조      |
+| **3** | HYSPLIT User’s Guide  | 코드 1:1 구현     |
+| **4** | 수치적분 문헌               | Heun 방식 정확 구현 |
+| **5** | Rolph et al. (2017)   | 실시간/운영 관점     |
+
+---
+
+# ⚠️ 매우 중요한 현실 조언
+
+> ❗ **논문만으로는 “완전히 동일”해질 수 없습니다.**
+
+HYSPLIT과 100% 동일하려면:
+
+* NOAA 기상 전처리 방식 (ARL format)
+* 보간 순서
+* 시간 step clipping
+* backward trajectory 시 부호 처리
+  까지 **코드 레벨 복제**가 필요합니다.
+
+---
+
+## 다음 단계로 바로 이어서 가능
+
+원하시면 제가:
+1️⃣ **HYSPLIT 궤적 적분 수식 → Python 코드**
+2️⃣ **NOAA ARL format 해석**
+3️⃣ **HYSPLIT vs FLEXPART 궤적 차이**
+4️⃣ **“동일성 검증 체크리스트”**
+
+중 하나를 **바로 이어서** 정리해 드릴게요.
